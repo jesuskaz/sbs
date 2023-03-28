@@ -1,0 +1,130 @@
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="card">
+                    <div class="card-header">
+                        <h4>AJOUT D'UNE FORMATION</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" wire:submit.prevent="save" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label>Titre</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <input wire:model="title" id="title" required type="text" class="form-control"
+                                            name="title" autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Durée</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-clock"></i>
+                                            </div>
+                                        </div>
+                                        <input wire:model="duration" required type="number" name="duration"
+                                            class="form-control ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label>Catégorie formation</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-check-square"></i>
+                                            </div>
+                                        </div>
+                                        <select class="form-control" wire:model="category" required>
+                                            <option value="">----------------------- Sélectionner -----------------------
+                                            </option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Photo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-file-image"></i>
+                                            </div>
+                                        </div>
+                                        <input wire:model="image" type="file" required name="image" class="form-control">
+                                    </div>
+                                    {{-- <div wire:loading.delay.long wire:target="image">Chargement...</div> --}}
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label>Description</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-align-left"></i>
+                                            </div>
+                                        </div>
+                                        <input wire:model="description" required type="text" name="description"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label>Lien http de la formation</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-globe"></i>
+                                            </div>
+                                        </div>
+                                        <input wire:model="lien" type="text" required name="lien" placeholder="lien de la formation"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- </div> --}}
+
+                            <div class="form-group col-12">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    ENREGISTRER FORMATION
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <footer class="main-footer">
+        <div class="footer-left">
+            <a href="templateshub.net">LEADERSOF - TOMORROW</a></a>
+        </div>
+        <div class="footer-right">
+        </div>
+    </footer>
+</div>
+</div>
+</div>
